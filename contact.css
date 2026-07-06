@@ -1,0 +1,526 @@
+/* EduVerse Contact Us CSS - Colorful Animated Theme */
+
+:root {
+  --bg-dark: #05050a;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  
+  --color-1: #c084fc; /* Purple */
+  --color-2: #38bdf8; /* Cyan */
+  --color-3: #fb7185; /* Pink */
+  --color-4: #facc15; /* Yellow */
+  
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(5, 5, 10, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-decoration: none;
+  background: linear-gradient(to right, #ffffff 40%, var(--color-1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand span {
+  color: var(--color-2);
+  -webkit-text-fill-color: var(--color-2);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  position: relative;
+  padding: 5px 0;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #fff;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(135deg, var(--color-1), var(--color-2));
+  border-radius: 2px;
+}
+
+.back-dashboard .back-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.back-dashboard .back-link:hover {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: var(--color-2);
+  color: var(--color-2);
+}
+
+/* COLORFUL FLOATING BLOBS BACKGROUND */
+.color-bg-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+  opacity: 0.3;
+  pointer-events: none;
+  animation: float-animation 25s infinite alternate ease-in-out;
+}
+
+.blob-1 {
+  top: -10%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background-color: rgba(192, 132, 252, 0.4); /* Purple */
+}
+
+.blob-2 {
+  bottom: -10%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background-color: rgba(56, 189, 248, 0.4); /* Cyan */
+  animation-delay: -5s;
+}
+
+.blob-3 {
+  top: 40%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  background-color: rgba(251, 113, 133, 0.3); /* Rose */
+  animation-delay: -10s;
+}
+
+@keyframes float-animation {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(100px, 80px) scale(1.2) rotate(120deg);
+  }
+  66% {
+    transform: translate(-50px, 150px) scale(0.85) rotate(240deg);
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(360deg);
+  }
+}
+
+/* CONTACT VIEWPORT & CARD */
+.contact-viewport {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 120px auto 60px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 220px);
+}
+
+.contact-card-container {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  background: rgba(13, 13, 25, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  width: 100%;
+}
+
+/* INFO PANEL */
+.info-section {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(20, 10, 45, 0.4) 0%, rgba(5, 5, 10, 0.4) 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.info-tag {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--color-2);
+  background: rgba(56, 189, 248, 0.1);
+  padding: 5px 12px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.info-section h2 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+/* METHOD CARDS */
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.method-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.method-card:hover {
+  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.method-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.method-card h5 {
+  font-size: 0.95rem;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.method-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Color schemes for methods */
+.card-blue .method-icon { background: rgba(56, 189, 248, 0.1); color: var(--color-2); }
+.card-blue:hover { border-color: rgba(56, 189, 248, 0.3); }
+
+.card-pink .method-icon { background: rgba(251, 113, 133, 0.1); color: var(--color-3); }
+.card-pink:hover { border-color: rgba(251, 113, 133, 0.3); }
+
+.card-yellow .method-icon { background: rgba(250, 204, 21, 0.1); color: var(--color-4); }
+.card-yellow:hover { border-color: rgba(250, 204, 21, 0.3); }
+
+/* FORM PANEL */
+.form-section {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  transition: opacity 0.4s ease;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.floating-input-group {
+  position: relative;
+  width: 100%;
+}
+
+.floating-input-group input, 
+.floating-input-group textarea {
+  width: 100%;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  outline: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.floating-input-group textarea {
+  resize: none;
+}
+
+.floating-input-group label {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.input-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-1), var(--color-2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+/* Input Focus states */
+.floating-input-group input:focus ~ .input-line,
+.floating-input-group textarea:focus ~ .input-line {
+  transform: scaleX(1);
+}
+
+.floating-input-group input:focus,
+.floating-input-group textarea:focus {
+  border-bottom-color: transparent;
+}
+
+.floating-input-group input:focus + label,
+.floating-input-group input:not(:placeholder-shown) + label {
+  top: -12px;
+  font-size: 0.8rem;
+  color: var(--color-2);
+}
+
+.floating-input-group textarea:focus + label,
+.floating-input-group textarea:not(:placeholder-shown) + label {
+  top: -14px;
+  font-size: 0.8rem;
+  color: var(--color-2);
+}
+
+/* SUBMIT BUTTON WITH FLY ANIMATION */
+.send-btn {
+  background: linear-gradient(135deg, var(--color-1) 0%, #a855f7 100%);
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(168, 85, 247, 0.25);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.send-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(168, 85, 247, 0.45);
+}
+
+.btn-text {
+  transition: all 0.3s ease;
+}
+
+.plane-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* Active fly trigger classes */
+.send-btn.fly-active {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  align-self: center;
+  background: var(--color-2);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.8);
+}
+
+.send-btn.fly-active .btn-text {
+  opacity: 0;
+  font-size: 0;
+  width: 0;
+  padding: 0;
+}
+
+.send-btn.fly-active .plane-icon {
+  transform: scale(1.2) translate(100px, -100px); /* Fly off screen */
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.55, 0, 0.1, 1), opacity 0.6s ease;
+}
+
+/* FORM SUCCESS STATE CARD */
+.form-success-state {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -40%);
+  width: 80%;
+  text-align: center;
+  display: none;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.form-success-state.active {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.success-plane-orbit {
+  width: 90px;
+  height: 90px;
+  border: 1px dashed rgba(56, 189, 248, 0.3);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.success-plane {
+  animation: plane-spin 4s infinite linear;
+}
+
+@keyframes plane-spin {
+  0% { transform: rotate(0deg) translate(45px) rotate(0deg); }
+  100% { transform: rotate(360deg) translate(45px) rotate(-360deg); }
+}
+
+.form-success-state h4 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-2);
+  margin-bottom: 8px;
+}
+
+.form-success-state p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 10;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 900px) {
+  .contact-viewport {
+    margin-top: 100px;
+  }
+  .contact-card-container {
+    grid-template-columns: 1fr;
+  }
+  .info-section {
+    padding: 30px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .form-section {
+    padding: 30px;
+  }
+  .input-row {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}

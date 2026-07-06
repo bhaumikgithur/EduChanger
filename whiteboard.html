@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Study Whiteboard - EduChanger</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="whiteboard.css">
+</head>
+<body>
+  <!-- Particle Background -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Top Glass Bar -->
+  <header class="top-bar">
+    <div class="brand-container">
+      <a href="dashboard.html" class="back-btn">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back to Dashboard
+      </a>
+      <span class="divider">|</span>
+      <h1 class="room-title">🏛️ Group Study Room: <span id="board-curriculum">Class X Boards</span></h1>
+    </div>
+    
+    <div class="active-indicators">
+      <div class="room-code-badge" id="btn-show-room-code" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(168, 85, 247, 0.12); border: 1px solid rgba(168, 85, 247, 0.35); padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; color: #fff; cursor: pointer; transition: all 0.3s;" title="Click to copy Room Code">
+        <span>🔑 Room Code: <strong id="display-room-code" style="color: var(--accent-cyan); letter-spacing: 1px;">------</strong></span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 4px; opacity: 0.8;">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+      </div>
+      
+      <div class="indicator-item">
+        <span class="status-dot pulsing"></span>
+        <span id="members-count">1 Online</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Grid Workspace -->
+  <div class="workspace-grid">
+    <!-- Left Toolbar Panel -->
+    <aside class="toolbar-panel">
+      <div class="tool-section">
+        <h3>Drawing Tools</h3>
+        <div class="tools-grid">
+          <button class="tool-btn active" id="tool-pencil" title="Pencil">✏️</button>
+          <button class="tool-btn" id="tool-eraser" title="Eraser">🧹</button>
+          <button class="tool-btn" id="tool-clear" title="Clear Canvas">🗑️</button>
+        </div>
+      </div>
+
+      <div class="tool-section">
+        <h3>Brush Colors</h3>
+        <div class="colors-grid">
+          <button class="color-swatch active" data-color="#a855f7" style="background-color: #a855f7;"></button> <!-- Purple -->
+          <button class="color-swatch" data-color="#00f0ff" style="background-color: #00f0ff;"></button> <!-- Cyan -->
+          <button class="color-swatch" data-color="#10b981" style="background-color: #10b981;"></button> <!-- Emerald -->
+          <button class="color-swatch" data-color="#f59e0b" style="background-color: #f59e0b;"></button> <!-- Amber -->
+          <button class="color-swatch" data-color="#ffffff" style="background-color: #ffffff;"></button> <!-- White -->
+          <button class="color-swatch" data-color="#ef4444" style="background-color: #ef4444;"></button> <!-- Red -->
+        </div>
+      </div>
+
+      <div class="tool-section">
+        <h3>Brush Size</h3>
+        <div class="brush-size-slider">
+          <input type="range" id="brush-size" min="1" max="25" value="5">
+          <span id="brush-size-val">5px</span>
+        </div>
+      </div>
+      
+      <div class="tool-section shortcut-guide">
+        <h3>Board Tips</h3>
+        <p>🎨 Draw shapes, write equations, and invite peers.</p>
+        <p>🤝 Invited friends can draw simultaneously.</p>
+      </div>
+    </aside>
+
+    <!-- Center Drawing Board -->
+    <main class="board-area">
+      <div class="canvas-wrapper">
+        <canvas id="whiteboard-canvas"></canvas>
+        
+        <!-- Peer Cursor Overlay Container -->
+        <div id="peer-cursors-container"></div>
+      </div>
+    </main>
+
+    <!-- Right Side Study & Collaboration Panel -->
+    <aside class="collab-panel">
+      <!-- Members Section -->
+      <div class="collab-section">
+        <h3 class="panel-subheader">👥 Study Group Peers</h3>
+        <div class="members-list" id="group-members-list">
+          <div class="member-item current-user">
+            <span class="user-avatar" style="background: var(--accent-gradient);">Me</span>
+            <div class="member-info">
+              <span class="member-name">Bhaumik Raghavan</span>
+              <span class="member-status">Room Host</span>
+            </div>
+            <span class="peer-dot active"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Chat Box Section -->
+      <div class="collab-section chat-section">
+        <h3 class="panel-subheader">💬 Live Room Chat</h3>
+        <div class="chat-messages" id="chat-messages-container">
+          <div class="system-message">🎯 System: Welcome to your study whiteboard. Click 'Add Friends' to start collaborative learning.</div>
+        </div>
+        
+        <form class="chat-input-form" id="chat-form">
+          <input type="text" id="chat-input" placeholder="Ask peers a question..." autocomplete="off">
+          <button type="submit" class="btn-send-chat">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Invite Popup Modal -->
+  <div class="modal-overlay" id="invite-modal">
+    <div class="modal-card invite-card">
+      <h3>Invite Peers to Study Room</h3>
+      <p>Enter your friend's email or username to send an active classroom link.</p>
+      <form id="invite-form" style="margin-top: 15px; display: flex; flex-direction: column; gap: 15px;">
+        <div class="input-field-modal">
+          <input type="text" id="invite-username" required placeholder="e.g. Rahul, Sneha, study_peer">
+        </div>
+        <div style="display: flex; gap: 15px; margin-top: 5px;">
+          <button type="button" class="btn-secondary" id="btn-close-invite">Cancel</button>
+          <button type="submit" class="btn-primary-lms" style="flex: 1;">Send Invitation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Toast Notification -->
+  <div class="toast-notification" id="toast">Invitation dispatched!</div>
+
+  <!-- Sound effect bindings and scripts -->
+  <script src="whiteboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - EduChanger</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="edubot.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="dashboard.html" class="brand">Edu<span>Changer</span></a>
+      <nav class="nav-menu">
+        <a href="study.html" class="nav-link">Study Portal</a>
+        <a href="dashboard.html#videos" class="nav-link">Educational Videos</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link active">Contact Us</a>
+      </nav>
+      <div class="back-dashboard">
+        <a href="dashboard.html" class="back-link">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Dashboard
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Colorful Animated Background Grid -->
+  <div class="color-bg-blob blob-1"></div>
+  <div class="color-bg-blob blob-2"></div>
+  <div class="color-bg-blob blob-3"></div>
+
+  <main class="contact-viewport">
+    <div class="contact-card-container">
+      <!-- Info Section -->
+      <div class="info-section">
+        <span class="info-tag">WE ARE HERE FOR YOU</span>
+        <h2>Reach out to EduChanger Team</h2>
+        <p class="subtitle">Have questions about CBSE Class 10 Syllabus, resource uploads, or site access? Shoot us a message!</p>
+        
+        <div class="contact-methods">
+          <div class="method-card card-blue">
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <h5>Email Support</h5>
+              <p>support@educhanger.com</p>
+            </div>
+          </div>
+
+          <div class="method-card card-pink">
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <h5>HQ Office Location</h5>
+              <p>Digital Hub, New Delhi, India</p>
+            </div>
+          </div>
+
+          <div class="method-card card-yellow">
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a10 10 0 0 1 8 4 10 10 0 0 1-8 16 10 10 0 0 1-8-4 10 10 0 0 1 8-16zm0 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <div>
+              <h5>Office Hours</h5>
+              <p>Mon - Fri: 9:00 AM - 6:00 PM IST</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Section -->
+      <div class="form-section">
+        <form id="contact-form">
+          <div class="input-row">
+            <div class="floating-input-group">
+              <input type="text" id="contact-name" required placeholder=" ">
+              <label for="contact-name">Full Name</label>
+              <span class="input-line"></span>
+            </div>
+            <div class="floating-input-group">
+              <input type="email" id="contact-email" required placeholder=" ">
+              <label for="contact-email">Email Address</label>
+              <span class="input-line"></span>
+            </div>
+          </div>
+          <div class="floating-input-group">
+            <input type="text" id="contact-subject" required placeholder=" ">
+            <label for="contact-subject">Subject</label>
+            <span class="input-line"></span>
+          </div>
+          <div class="floating-input-group">
+            <textarea id="contact-message" rows="5" required placeholder=" "></textarea>
+            <label for="contact-message">Type your message here...</label>
+            <span class="input-line"></span>
+          </div>
+          
+          <button type="submit" class="send-btn" id="send-btn">
+            <span class="btn-text">Send Message</span>
+            <div class="plane-icon" id="plane-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </div>
+          </button>
+        </form>
+
+        <!-- Animation Success State -->
+        <div class="form-success-state" id="form-success">
+          <div class="success-plane-orbit">
+            <svg class="success-plane" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#00f0ff" stroke-width="2">
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </div>
+          <h4>Message Dispatched!</h4>
+          <p>Your query has taken off. We'll reply within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    &copy; 2026 EduChanger Portal. All Rights Reserved.
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Session Validation
+      const isLoggedIn = sessionStorage.getItem('educhanger_logged_in') === 'true';
+      if (!isLoggedIn) {
+        // Hide dashboard-only link if not logged in
+        document.querySelector('.back-dashboard').style.display = 'none';
+        document.querySelector('.nav-menu').style.display = 'none';
+      }
+
+      const form = document.getElementById('contact-form');
+      const sendBtn = document.getElementById('send-btn');
+      const planeIcon = document.getElementById('plane-icon');
+      const successState = document.getElementById('form-success');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const msgName = document.getElementById('contact-name').value.trim();
+        const msgEmail = document.getElementById('contact-email').value.trim();
+        const msgSubject = document.getElementById('contact-subject').value.trim();
+        const msgText = document.getElementById('contact-message').value.trim();
+
+        const newMsg = {
+          name: msgName,
+          email: msgEmail,
+          subject: msgSubject,
+          message: msgText,
+          date: new Date().toLocaleString()
+        };
+
+        const existingMsgs = JSON.parse(localStorage.getItem('educhanger_contact_messages') || '[]');
+        existingMsgs.unshift(newMsg);
+        localStorage.setItem('educhanger_contact_messages', JSON.stringify(existingMsgs));
+
+        // Trigger paper plane button animation
+        sendBtn.classList.add('fly-active');
+        
+        setTimeout(() => {
+          // Hide form content and show success card
+          form.style.opacity = '0';
+          form.style.pointerEvents = 'none';
+          
+          setTimeout(() => {
+            form.style.display = 'none';
+            successState.classList.add('active');
+          }, 400);
+        }, 1200);
+      });
+    });
+  </script>
+  <script src="edubot.js"></script>
+</body>
+</html>
